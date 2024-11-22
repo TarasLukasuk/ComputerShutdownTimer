@@ -12,7 +12,6 @@
     <Folder Include="Helpers\" />
     <Folder Include="Commands\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="Resources\Styles\" />
     <Folder Include="Views\Pages\" />	  
   </ItemGroup>
 
