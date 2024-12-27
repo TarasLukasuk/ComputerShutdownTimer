@@ -1,0 +1,22 @@
+﻿<Window x:Class="ComputerShutdownTimer.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComputerShutdownTimer.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None" Background="Transparent" AllowsTransparency="True">
+    <Grid>
+        <Border x:Name="ResizingTop" Background="White" Height="2" VerticalAlignment="Top" Margin="20,0" Cursor="SizeNS"/>
+        <Border x:Name="ResizingBottom" Background="White" Height="2" VerticalAlignment="Bottom" Margin="20,0" Cursor="SizeNS"/>
+        <Border x:Name="ResizingLeft" Background="White" Width="2" HorizontalAlignment="Left" Margin="0,20" Cursor="SizeWE"/>
+        <Border x:Name="ResizingRight" Background="White" Width="2" HorizontalAlignment="Right" Margin="0,20" Cursor="SizeWE"/>
+        <Border x:Name="ResizingTopLeft" Background="White" Width="20" Height="20" CornerRadius="20,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Cursor="SizeNWSE"/>
+        <Border x:Name="ResizingTopRight" Background="White" Width="20" Height="20" CornerRadius="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Right" Cursor="SizeNESW"/>
+        <Border x:Name="ResizingBottomLeft" Background="White" Width="20" Height="20" CornerRadius="0,0,0,20" VerticalAlignment="Bottom" HorizontalAlignment="Left" Cursor="SizeNESW"/>
+        <Border x:Name="ResizingBottomRight" Background="White" Width="20" Height="20" CornerRadius="0,0,20,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Cursor="SizeNWSE"/>
+        <Border x:Name="Body" Margin="2,2" CornerRadius="20" Background="Black">
+            
+        </Border>
+    </Grid>
+</Window>
