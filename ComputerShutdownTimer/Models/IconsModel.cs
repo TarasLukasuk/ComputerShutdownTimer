@@ -1,6 +1,6 @@
 ﻿namespace ComputerShutdownTimer.Models;
 
-internal class UIModel
+internal class IconsModel
 {
 
 }
