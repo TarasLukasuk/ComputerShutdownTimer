@@ -2,7 +2,7 @@
 
 namespace ComputerShutdownTimer.Views
 {
-    internal partial class MainWindow : Window
+    partial class MainWindow : Window
     {
         public MainWindow()
         {
