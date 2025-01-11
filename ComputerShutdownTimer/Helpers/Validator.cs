@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ComputerShutdownTimer.Helpers
 {
-    public static class Validator
+    internal static class Validator
     {
         public static bool IsHex(string color)
         {

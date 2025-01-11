@@ -1,5 +1,4 @@
-﻿using ComputerShutdownTimer.Helpers;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ComputerShutdownTimerTests
 {
@@ -23,7 +22,7 @@ namespace ComputerShutdownTimerTests
                                    "#C409D1", "#7F4751", "#0E3CCB", "#FA9307", "#E02C92", "#1F3B28", "#1754B9",
                                    "#36BA72", "#3B915A", "#C7BF07", "#81BDE4", "#8A3C91", "#64AE2B", "#5EE905",
                                    "#CD11E2", "#D7D3D3", "#193642", "#8844DF", "#801F56", "#187B69", "#E5C623",
-                                   "#0F14DB", "#B4AD24" 
+                                   "#0F14DB", "#B4AD24"
                                  };
 
             foreach (string item in hexColors)
