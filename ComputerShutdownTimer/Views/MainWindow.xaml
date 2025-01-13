@@ -5,6 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Shutdown Timer" Height="450" Width="800" WindowStyle="None" Background="Transparent" AllowsTransparency="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/RoundButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Border CornerRadius="20" Background="#2C3E50">
             <Grid>
@@ -13,19 +20,17 @@
                         <TextBlock Text="Shutdown Timer" Foreground="White" FontSize="20" FontWeight="Bold"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                            <Button Width="20" Height="20" Background="Transparent">
-                               
-                            </Button>
-                            <Button Width="20" Height="20" Background="Transparent">
+                            <CheckBox/>
+                            <Button Style="{StaticResource RoundButton}">
                                 
                             </Button>
-                            <Button Width="20" Height="20" Background="Transparent">
+                            <Button Style="{StaticResource RoundButton}">
 
                             </Button>
-                            <Button Width="20" Height="20" Background="Transparent">
+                            <Button Style="{StaticResource RoundButton}">
 
                             </Button>
-                            <Button Width="20" Height="20" Background="Transparent">
+                            <Button Style="{StaticResource RoundButton}">
 
                             </Button>
                         </StackPanel>

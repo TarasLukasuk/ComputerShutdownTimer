@@ -97,9 +97,12 @@
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="Resources\Styles\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Resources\Styles\RoundButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
