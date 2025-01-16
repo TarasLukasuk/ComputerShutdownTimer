@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace ComputerShutdownTimer.Views
+namespace ComputerShutdownTimer.Views.Forms
 {
     partial class MainWindow : Window
     {
