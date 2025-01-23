@@ -59,6 +59,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\ShowPageCommand.cs" />
+    <Compile Include="Services\PageCache.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Models\IconsModel.cs" />
     <Compile Include="Services\WindowResizer .cs" />
@@ -66,6 +68,9 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\SetTimePage.xaml.cs">
+      <DependentUpon>SetTimePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -95,9 +100,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Resources\Images\" />
-    <Folder Include="Views\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Resources\Styles\RoundCheckBox.xaml">
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Forms\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\SetTimePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

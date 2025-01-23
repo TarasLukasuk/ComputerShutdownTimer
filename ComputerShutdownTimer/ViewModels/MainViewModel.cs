@@ -1,4 +1,7 @@
-﻿using ComputerShutdownTimer.Models;
+﻿using ComputerShutdownTimer.Commands;
+using ComputerShutdownTimer.Models;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 namespace ComputerShutdownTimer.ViewModels
@@ -15,6 +18,14 @@ namespace ComputerShutdownTimer.ViewModels
         private BitmapImage _normalizeIcon;
         private BitmapImage _maximizeIcon;
         private BitmapImage _closeIcon;
+
+        public MainViewModel(Frame frame)
+        {
+            ShowPageCommand = new ShowPageCommand(frame);
+        }
+
+        public ICommand ShowPageCommand { get; }
+
 
         public BitmapImage AppIcon
         {

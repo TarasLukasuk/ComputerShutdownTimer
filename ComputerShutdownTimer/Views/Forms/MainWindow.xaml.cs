@@ -1,4 +1,5 @@
 ﻿using ComputerShutdownTimer.Services;
+using ComputerShutdownTimer.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -15,6 +16,8 @@ namespace ComputerShutdownTimer.Views.Forms
             InitializeComponent();
 
             _windowResizer = new WindowResizer(this);
+
+            DataContext = new MainViewModel(ShowPages);
         }
 
         private void Resize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
