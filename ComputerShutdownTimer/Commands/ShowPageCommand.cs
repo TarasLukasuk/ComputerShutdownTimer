@@ -26,7 +26,7 @@ namespace ComputerShutdownTimer.Commands
         {
             if (parameter is string pageName)
             {
-                _frame.Navigate(_pageCache.SavePage(pageName));
+                _frame.Navigate(_pageCache.GetOrCreatePage(pageName));
             }
         }
     }

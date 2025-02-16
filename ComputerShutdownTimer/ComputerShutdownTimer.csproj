@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,6 +63,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\ShowPageCommand.cs" />
+    <Compile Include="Controls\SetTime.xaml.cs">
+      <DependentUpon>SetTime.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ObjectToInteger.cs" />
+    <Compile Include="Converters\ObjectToString.cs" />
+    <Compile Include="Converters\TypeToPage.cs" />
+    <Compile Include="Converters\IConverterType.cs" />
     <Compile Include="Services\PageCache.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Models\IconsModel.cs" />
@@ -103,11 +113,19 @@
     <Folder Include="Resources\Images\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\SetTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\RoundCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\RoundButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\SettingButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
