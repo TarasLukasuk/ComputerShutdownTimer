@@ -70,6 +70,7 @@
     <Compile Include="Converters\ObjectToString.cs" />
     <Compile Include="Converters\TypeToPage.cs" />
     <Compile Include="Converters\IConverterType.cs" />
+    <Compile Include="Services\LoaderIcon.cs" />
     <Compile Include="Services\PageCache.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Models\IconsModel.cs" />
@@ -114,6 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\SetTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Colors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

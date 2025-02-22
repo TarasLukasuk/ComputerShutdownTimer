@@ -17,17 +17,19 @@ namespace ComputerShutdownTimer.Views.Forms
 
             _windowResizer = new WindowResizer(this);
 
+            InitializeDataContext();
+        }
+
+        private void InitializeDataContext()
+        {
             DataContext = new MainViewModel(ShowPages);
         }
 
         private void Resize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is Rectangle rectangle)
+            if (sender is Rectangle rectangle && _windowResizer.ResizeHandlers.TryGetValue(rectangle.Name, out Action action))
             {
-                if (_windowResizer.ResizeHandlers.TryGetValue(rectangle.Name, out Action action))
-                {
-                    action.Invoke();
-                }
+                action?.Invoke();
             }
         }
     }

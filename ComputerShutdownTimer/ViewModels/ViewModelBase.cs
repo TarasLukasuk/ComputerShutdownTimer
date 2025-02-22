@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ComputerShutdownTimer.ViewModels
 {
@@ -6,19 +7,19 @@ namespace ComputerShutdownTimer.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetProperty(ref TType field, TType newValue)
+        protected bool SetProperty(ref TType field, TType newValue, [CallerMemberName] string propertyName = null)
         {
             if (Equals(field, newValue))
             {
                 return false;
             }
             field = newValue;
-            OnPropertyChanged(nameof(field));
+            OnPropertyChanged(propertyName);
             return true;
         }
     }

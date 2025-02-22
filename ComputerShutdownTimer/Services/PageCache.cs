@@ -16,12 +16,26 @@ namespace ComputerShutdownTimer.Services
                 throw new ArgumentNullException(nameof(pageName));
             }
 
-            if (!_cache.Contains(pageName))
+            return _cache.Get(pageName) as Page ?? CreateAndCachePage(pageName);
+        }
+
+        private Page CreateAndCachePage(string pageName)
+        {
+            Type pageType = Type.GetType(pageName);
+            if (pageType == null)
             {
-                _cache.Set(pageName, new TypeToPage().Convert(Type.GetType(pageName)), new CacheItemPolicy());
+                throw new ArgumentException($"Не вдалося знайти тип сторінки для '{pageName}'. Переконайтеся, що повне ім'я типу правильне.", nameof(pageName));
             }
 
-            return _cache.Get(pageName) as Page;
+            Page page = new TypeToPage().Convert(pageType) as Page;
+            if (page == null)
+            {
+                throw new InvalidOperationException($"Конвертація типу '{pageType.FullName}' у Page повернула null.");
+            }
+
+            _cache.Set(pageName, page, new CacheItemPolicy());
+
+            return page;
         }
     }
 }
