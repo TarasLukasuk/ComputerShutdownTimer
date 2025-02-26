@@ -3,36 +3,29 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-namespace ComputerShutdownTimer.Services
+internal class LoaderIcon
 {
-    internal class LoaderIcon
+    private const string BASE_PATH = "Resources\\Images\\";
+    private const string EXTENSION = ".png";
+
+    public async Task<BitmapImage> LoadIconAsync(string fileName)
     {
-        private const string BASE_PATH = "Resources/Images/";
-        private const string EXTENSION = ".png";
+        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{BASE_PATH}{fileName}{EXTENSION}").Replace("\\bin\\Debug", string.Empty);
 
-        public async Task<BitmapImage> LoadIconAsync(string fileName)
+        if (!File.Exists(path))
         {
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{BASE_PATH}{fileName}{EXTENSION}");
-
-            if (!File.Exists(path))
-            {
-                throw new FileNotFoundException($"File {path} not found");
-            }
-
-
-            return await Task.Run(() =>
-            {
-                using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, useAsync: true))
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.StreamSource = stream;
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.EndInit();
-                    bitmap.Freeze();
-                    return bitmap;
-                }
-            });
+            throw new FileNotFoundException($"File {path} not found");
         }
+
+        return await Task.Run(() =>
+        {
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(path, UriKind.Absolute);
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.EndInit();
+            bitmap.Freeze();
+            return bitmap;
+        });
     }
 }

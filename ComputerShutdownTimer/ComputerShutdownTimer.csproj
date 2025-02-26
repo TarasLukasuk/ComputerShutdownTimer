@@ -110,9 +110,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="Controls\SetTime.xaml">
       <SubType>Designer</SubType>
@@ -142,6 +140,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\app.png" />
+    <Resource Include="Resources\Images\arrow.png" />
+    <Resource Include="Resources\Images\close.png" />
+    <Resource Include="Resources\Images\maximize.png" />
+    <Resource Include="Resources\Images\minimize.png" />
+    <Resource Include="Resources\Images\normalize.png" />
+    <Resource Include="Resources\Images\setting.png" />
+    <Resource Include="Resources\Images\to_tray.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

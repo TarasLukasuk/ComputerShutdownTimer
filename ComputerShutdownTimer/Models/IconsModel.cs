@@ -23,7 +23,7 @@ namespace ComputerShutdownTimer.Models
             List<Task<BitmapImage>> tasks = new List<Task<BitmapImage>>
             {
                 loaderIcon.LoadIconAsync("app"),
-                loaderIcon.LoadIconAsync("settings"),
+                loaderIcon.LoadIconAsync("setting"),
                 loaderIcon.LoadIconAsync("arrow"),
                 loaderIcon.LoadIconAsync("to_tray"),
                 loaderIcon.LoadIconAsync("minimize"),

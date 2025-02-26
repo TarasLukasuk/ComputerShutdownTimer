@@ -23,14 +23,23 @@
             <Grid>
                 <Border VerticalAlignment="Top" CornerRadius="20,20,0,0" Height="50" Background="{StaticResource AccentBrush}" Padding="10">
                     <Grid>
+                        <Image HorizontalAlignment="Left" Width="35" Source="{Binding AppIcon}"/>
                         <TextBlock Text="Shutdown Timer" Foreground="White" FontSize="20" FontWeight="Bold" 
                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                             <CheckBox x:Name="ShowSettingPanel" Style="{StaticResource RoundCheckBox}" IsChecked="False"/>
-                            <Button Style="{StaticResource RoundButton}"/>
-                            <Button Style="{StaticResource RoundButton}"/>
-                            <Button Style="{StaticResource RoundButton}"/>
-                            <Button Style="{StaticResource RoundButton}"/>
+                            <Button x:Name="ToTray" Style="{StaticResource RoundButton}">
+                                <Image Source="{Binding ToTrayIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource RoundButton}">
+                                <Image Source="{Binding MinimizeIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource RoundButton}">
+                                <Image Source="{Binding NormalizeIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource RoundButton}">
+                                <Image Source="{Binding CloseIcon}"/>
+                            </Button>
                         </StackPanel>
                     </Grid>
                 </Border>
