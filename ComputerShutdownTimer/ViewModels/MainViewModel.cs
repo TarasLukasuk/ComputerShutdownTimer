@@ -27,7 +27,7 @@ namespace ComputerShutdownTimer.ViewModels
         private async void LoadIconsAsync()
         {
             IconsModel iconsModel = new IconsModel();
-            await iconsModel.InitializationIconsAsync();
+            await iconsModel.InitializeIconsAsync();
 
             AppIcon = iconsModel.AppIcon;
             SettingsIcon = iconsModel.SettingsIcon;

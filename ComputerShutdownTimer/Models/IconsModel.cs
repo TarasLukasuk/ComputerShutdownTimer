@@ -1,5 +1,7 @@
-﻿using ComputerShutdownTimer.Services;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
@@ -16,32 +18,46 @@ namespace ComputerShutdownTimer.Models
         public BitmapImage MaximizeIcon { get; private set; }
         public BitmapImage CloseIcon { get; private set; }
 
-        public async Task InitializationIconsAsync()
+        private const string BasePath = "Resources\\Images\\";
+        private const string FileName = "icons";
+        private const string Extension = ".json";
+
+        public async Task InitializeIconsAsync()
         {
-            LoaderIcon loaderIcon = new LoaderIcon();
+            string pathJson = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{BasePath}{FileName}{Extension}").Replace("\\bin\\Debug", string.Empty);
 
-            List<Task<BitmapImage>> tasks = new List<Task<BitmapImage>>
+            IconLoader iconLoader = new IconLoader();
+
+            using (FileStream stream = new FileStream(pathJson, FileMode.Open, FileAccess.Read))
             {
-                loaderIcon.LoadIconAsync("app"),
-                loaderIcon.LoadIconAsync("setting"),
-                loaderIcon.LoadIconAsync("arrow"),
-                loaderIcon.LoadIconAsync("to_tray"),
-                loaderIcon.LoadIconAsync("minimize"),
-                loaderIcon.LoadIconAsync("normalize"),
-                loaderIcon.LoadIconAsync("maximize"),
-                loaderIcon.LoadIconAsync("close")
-            };
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    IconsBase64Model iconsBase64Model = JsonConvert.DeserializeObject<IconsBase64Model>(reader.ReadToEnd());
 
-            BitmapImage[] results = await Task.WhenAll(tasks);
+                    List<Task<BitmapImage>> tasks = new List<Task<BitmapImage>>
+                    {
+                        iconLoader.LoadIconAsync(iconsBase64Model.App),
+                        iconLoader.LoadIconAsync(iconsBase64Model.Setting),
+                        iconLoader.LoadIconAsync(iconsBase64Model.Arrow),
+                        iconLoader.LoadIconAsync(iconsBase64Model.ToTray),
+                        iconLoader.LoadIconAsync(iconsBase64Model.Minimize),
+                        iconLoader.LoadIconAsync(iconsBase64Model.Normalize),
+                        iconLoader.LoadIconAsync(iconsBase64Model.Maximize),
+                        iconLoader.LoadIconAsync(iconsBase64Model.Close)
+                    };
 
-            AppIcon = results[0];
-            SettingsIcon = results[1];
-            ArrowIcon = results[2];
-            ToTrayIcon = results[3];
-            MinimizeIcon = results[4];
-            NormalizeIcon = results[5];
-            MaximizeIcon = results[6];
-            CloseIcon = results[7];
+                    BitmapImage[] results = await Task.WhenAll(tasks);
+
+                    AppIcon = results[0];
+                    SettingsIcon = results[1];
+                    ArrowIcon = results[2];
+                    ToTrayIcon = results[3];
+                    MinimizeIcon = results[4];
+                    NormalizeIcon = results[5];
+                    MaximizeIcon = results[6];
+                    CloseIcon = results[7];
+                }
+            }
         }
     }
 }

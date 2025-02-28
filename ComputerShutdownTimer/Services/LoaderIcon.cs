@@ -3,29 +3,23 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
-internal class LoaderIcon
+internal class IconLoader
 {
-    private const string BASE_PATH = "Resources\\Images\\";
-    private const string EXTENSION = ".png";
-
-    public async Task<BitmapImage> LoadIconAsync(string fileName)
+    public async Task<BitmapImage> LoadIconAsync(string base64String)
     {
-        string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{BASE_PATH}{fileName}{EXTENSION}").Replace("\\bin\\Debug", string.Empty);
-
-        if (!File.Exists(path))
-        {
-            throw new FileNotFoundException($"File {path} not found");
-        }
-
         return await Task.Run(() =>
         {
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(path, UriKind.Absolute);
-            bitmap.CacheOption = BitmapCacheOption.OnLoad;
-            bitmap.EndInit();
-            bitmap.Freeze();
-            return bitmap;
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            using (var ms = new MemoryStream(imageBytes))
+            {
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = ms;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+                return bitmapImage;
+            }
         });
     }
 }
