@@ -1,4 +1,7 @@
-﻿namespace ComputerShutdownTimer.Models
+﻿using System.Collections.Generic;
+using System.Reflection;
+
+namespace ComputerShutdownTimer.Models
 {
     class IconsBase64Model
     {

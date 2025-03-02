@@ -74,10 +74,10 @@
     <Compile Include="Converters\TypeToPage.cs" />
     <Compile Include="Converters\IConverterType.cs" />
     <Compile Include="Models\IconsBase64Model.cs" />
+    <Compile Include="Services\Icon.cs" />
     <Compile Include="Services\LoaderIcon.cs" />
     <Compile Include="Services\PageCache.cs" />
     <Compile Include="Helpers\Validator.cs" />
-    <Compile Include="Models\IconsModel.cs" />
     <Compile Include="Services\WindowResizer .cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

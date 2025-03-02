@@ -7,7 +7,7 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Shutdown Timer" Height="450" Width="800" MinHeight="225" MinWidth="1000" 
-        WindowStyle="None" Background="Transparent" AllowsTransparency="True">
+        WindowStyle="None" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

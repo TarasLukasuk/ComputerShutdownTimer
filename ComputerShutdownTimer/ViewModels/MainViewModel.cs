@@ -1,5 +1,7 @@
 ﻿using ComputerShutdownTimer.Commands;
 using ComputerShutdownTimer.Models;
+using ComputerShutdownTimer.Services;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -20,23 +22,12 @@ namespace ComputerShutdownTimer.ViewModels
         public MainViewModel(Frame frame)
         {
             ShowPageCommand = new ShowPageCommand(frame);
-
-            LoadIconsAsync();
         }
 
-        private async void LoadIconsAsync()
+        public async Task LoadIconsAsync()
         {
-            IconsModel iconsModel = new IconsModel();
-            await iconsModel.InitializeIconsAsync();
-
-            AppIcon = iconsModel.AppIcon;
-            SettingsIcon = iconsModel.SettingsIcon;
-            ArrowIcon = iconsModel.ArrowIcon;
-            ToTrayIcon = iconsModel.ToTrayIcon;
-            MinimizeIcon = iconsModel.MinimizeIcon;
-            NormalizeIcon = iconsModel.NormalizeIcon;
-            MaximizeIcon = iconsModel.MaximizeIcon;
-            CloseIcon = iconsModel.CloseIcon;
+            Icon icon = new Icon(new IconLoader(), this);
+            await icon.InitializeIconsAsync();
         }
 
         public ICommand ShowPageCommand { get; }

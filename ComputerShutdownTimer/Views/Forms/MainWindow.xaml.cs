@@ -10,26 +10,36 @@ namespace ComputerShutdownTimer.Views.Forms
     public partial class MainWindow : Window
     {
         private readonly WindowResizer _windowResizer;
+        private readonly MainViewModel _mainView;
 
         public MainWindow()
         {
             InitializeComponent();
 
             _windowResizer = new WindowResizer(this);
+            _mainView = new MainViewModel(ShowPages);
 
-            InitializeDataContext();
+            DataContext = _mainView;
         }
 
-        private void InitializeDataContext()
-        {
-            DataContext = new MainViewModel(ShowPages);
-        }
 
         private void Resize_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is Rectangle rectangle && _windowResizer.ResizeHandlers.TryGetValue(rectangle.Name, out Action action))
             {
                 action?.Invoke();
+            }
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                await _mainView.LoadIconsAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading icons: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
