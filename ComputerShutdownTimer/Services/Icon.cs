@@ -11,7 +11,7 @@ namespace ComputerShutdownTimer.Services
 {
     internal class Icon
     {
-        private const string BasePath = "Resources\\Images\\";
+        private const string BasePath = "Images\\";
         private const string FileName = "icons";
         private const string Extension = ".json";
 

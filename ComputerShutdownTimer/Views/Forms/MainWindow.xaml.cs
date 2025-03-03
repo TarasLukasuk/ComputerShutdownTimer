@@ -28,6 +28,8 @@ namespace ComputerShutdownTimer.Views.Forms
             if (sender is Rectangle rectangle && _windowResizer.ResizeHandlers.TryGetValue(rectangle.Name, out Action action))
             {
                 action?.Invoke();
+
+                
             }
         }
 
@@ -35,7 +37,7 @@ namespace ComputerShutdownTimer.Views.Forms
         {
             try
             {
-                await _mainView.LoadIconsAsync();
+                await _mainView.InitializeAsync();
             }
             catch (Exception ex)
             {

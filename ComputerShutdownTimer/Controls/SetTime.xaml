@@ -6,17 +6,13 @@
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Colors.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-
             <Style x:Key="RoundButton" TargetType="Button">
                 <Setter Property="Width" Value="60"/>
                 <Setter Property="Height" Value="60"/>
                 <Setter Property="FontSize" Value="18"/>
-                <Setter Property="Foreground" Value="{StaticResource TextOnAccentBrush}"/>
-                <Setter Property="Background" Value="{StaticResource CountBackgroundBrush}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="#ECEFF4"/>
+                <Setter Property="Background" Value="#4C566A"/>
+                <Setter Property="BorderBrush" Value="#81A1C1"/>
                 <Setter Property="BorderThickness" Value="2"/>
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Padding" Value="10"/>
@@ -33,12 +29,12 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource AccentBrush}"/>
-                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RoundButtonPressedBackground}"/>
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#5E81AC"/>
+                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#88C0D0"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource RoundButtonPressedBackground}"/>
-                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource RoundButtonPressedBorderBrush}"/>
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#3B4252"/>
+                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#4C566A"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -50,10 +46,10 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label Foreground="{StaticResource TextOnAccentBrush}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" 
+            <Label Foreground="#ECEFF4" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" 
                    Content="{Binding LableText, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
 
-            <Border Background="{StaticResource BackgroundBrush}" MinWidth="240" MinHeight="70" CornerRadius="35" Padding="5">
+            <Border Background="#4C566A" MinWidth="240" MinHeight="70" CornerRadius="35" Padding="5">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -63,8 +59,8 @@
 
                     <Button x:Name="Reduce" Style="{StaticResource RoundButton}" Content="&#60;" Grid.Column="0" Click="Reduce_Click"/>
 
-                    <Border CornerRadius="100" Background="{StaticResource CountBackgroundBrush}" Grid.Column="1" Width="70" Height="50">
-                        <Label x:Name="Count" Content="00" Foreground="{StaticResource TextOnAccentBrush}" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    <Border CornerRadius="100" Background="#3B4252" Grid.Column="1" Width="70" Height="50">
+                        <Label x:Name="Count" Content="00" Foreground="#ECEFF4" VerticalAlignment="Center" HorizontalAlignment="Center" 
                                FontSize="20" FontWeight="Bold"/>
                     </Border>
 

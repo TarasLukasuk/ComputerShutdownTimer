@@ -1,14 +1,14 @@
 ﻿using ComputerShutdownTimer.Commands;
-using ComputerShutdownTimer.Models;
 using ComputerShutdownTimer.Services;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace ComputerShutdownTimer.ViewModels
 {
-    internal class MainViewModel : ViewModelBase<BitmapImage>
+    internal class MainViewModel : ViewModelBase
     {
         private BitmapImage _appIcon;
         private BitmapImage _settingsIcon;
@@ -19,12 +19,20 @@ namespace ComputerShutdownTimer.ViewModels
         private BitmapImage _maximizeIcon;
         private BitmapImage _closeIcon;
 
+        private Brush _backgroundColor;
+        private Brush _secondaryBackgroundColor;
+        private Brush _accentColor;
+        private Brush _lightAccentColor;
+        private Brush _textColor;
+        private Brush _borderColor;
+        private Brush _darkBackgroundColor;
+
         public MainViewModel(Frame frame)
         {
             ShowPageCommand = new ShowPageCommand(frame);
         }
 
-        public async Task LoadIconsAsync()
+        public async Task InitializeAsync()
         {
             Icon icon = new Icon(new IconLoader(), this);
             await icon.InitializeIconsAsync();
@@ -78,6 +86,48 @@ namespace ComputerShutdownTimer.ViewModels
         {
             get => _closeIcon;
             set => SetProperty(ref _closeIcon, value);
+        }
+
+        public Brush BackgroundColor
+        {
+            get => _backgroundColor;
+            set => SetProperty(ref _backgroundColor, value);
+        }
+
+        public Brush SecondaryBackgroundColor
+        {
+            get => _secondaryBackgroundColor;
+            set => SetProperty(ref _secondaryBackgroundColor, value);
+        }
+
+        public Brush AccentColor
+        {
+            get => _accentColor; 
+            set => SetProperty(ref _accentColor, value);
+        }
+
+        public Brush LightAccentColor
+        {
+            get => _lightAccentColor; 
+            set => SetProperty(ref _lightAccentColor, value);
+        }
+
+        public Brush TextColor
+        {
+            get => _textColor; 
+            set => SetProperty(ref _textColor, value);
+        }
+
+        public Brush BorderColor
+        {
+            get => _borderColor; 
+            set => SetProperty(ref _borderColor, value);
+        }
+
+        public Brush DarkBackgroundColor
+        {
+            get => _darkBackgroundColor; 
+            set => SetProperty(ref _darkBackgroundColor, value);
         }
     }
 }

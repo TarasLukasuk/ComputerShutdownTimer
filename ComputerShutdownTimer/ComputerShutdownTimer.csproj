@@ -69,6 +69,7 @@
     <Compile Include="Controls\SetTime.xaml.cs">
       <DependentUpon>SetTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\HexToBrash.cs" />
     <Compile Include="Converters\ObjectToInteger.cs" />
     <Compile Include="Converters\ObjectToString.cs" />
     <Compile Include="Converters\TypeToPage.cs" />
@@ -111,7 +112,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\Images\icons.json" />
+    <None Include="Resources\icons.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -119,22 +120,6 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Controls\SetTime.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Colors.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\RoundCheckBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\RoundButton.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\Styles\SettingButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

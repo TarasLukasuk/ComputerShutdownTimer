@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace ComputerShutdownTimer.ViewModels
 {
-    internal class ViewModelBase<TType> : INotifyPropertyChanged
+    internal class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -12,7 +12,7 @@ namespace ComputerShutdownTimer.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetProperty(ref TType field, TType newValue, [CallerMemberName] string propertyName = null)
+        protected bool SetProperty<TType>(ref TType field, TType newValue, [CallerMemberName] string propertyName = null)
         {
             if (Equals(field, newValue))
             {
