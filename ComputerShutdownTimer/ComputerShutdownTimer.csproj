@@ -69,6 +69,9 @@
     <Compile Include="Controls\SetTime.xaml.cs">
       <DependentUpon>SetTime.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TimeDisplay.xaml.cs">
+      <DependentUpon>TimeDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\HexToBrash.cs" />
     <Compile Include="Converters\ObjectToInteger.cs" />
     <Compile Include="Converters\ObjectToString.cs" />
@@ -120,6 +123,10 @@
   <ItemGroup />
   <ItemGroup>
     <Page Include="Controls\SetTime.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TimeDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

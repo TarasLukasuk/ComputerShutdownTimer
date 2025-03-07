@@ -7,17 +7,11 @@
       mc:Ignorable="d"
       Title="SetTimePage">
 
-    <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <Controls:SetTime Grid.Column="0" LableText="Hour" MaxTimeValue="23" Margin="5"/>
-            <Controls:SetTime Grid.Column="1" LableText="Minute" MaxTimeValue="59" Margin="5"/>
-            <Controls:SetTime Grid.Column="2" LableText="Second" MaxTimeValue="59" Margin="5"/>
-        </Grid>
-    </Grid>
+    <Viewbox>
+        <StackPanel Orientation="Horizontal">
+            <Controls:SetTime LableText="Hour" MaxTimeValue="23" Margin="5"/>
+            <Controls:SetTime LableText="Minute" MaxTimeValue="59" Margin="5"/>
+            <Controls:SetTime LableText="Second" MaxTimeValue="59" Margin="5"/>
+        </StackPanel>
+    </Viewbox>
 </Page>
