@@ -18,6 +18,8 @@ namespace ComputerShutdownTimer.ViewModels
         private BitmapImage _normalizeIcon;
         private BitmapImage _maximizeIcon;
         private BitmapImage _closeIcon;
+        private BitmapImage _playIcon;
+        private BitmapImage _pauseIcon;
 
         private Brush _backgroundColor;
         private Brush _secondaryBackgroundColor;
@@ -86,6 +88,18 @@ namespace ComputerShutdownTimer.ViewModels
         {
             get => _closeIcon;
             set => SetProperty(ref _closeIcon, value);
+        }
+
+        public BitmapImage PlayIcon
+        {
+            get => _playIcon;
+            set => SetProperty(ref _playIcon, value);
+        }
+
+        public BitmapImage PauseIcon
+        {
+            get => _pauseIcon;
+            set => SetProperty(ref _pauseIcon, value);
         }
 
         public Brush BackgroundColor

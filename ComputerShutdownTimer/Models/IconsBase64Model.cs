@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-
-namespace ComputerShutdownTimer.Models
+﻿namespace ComputerShutdownTimer.Models
 {
-    class IconsBase64Model
+    internal class IconsBase64Model
     {
         public string App { get; set; }
         public string Setting { get; set; }
@@ -13,5 +10,7 @@ namespace ComputerShutdownTimer.Models
         public string Normalize { get; set; }
         public string Maximize { get; set; }
         public string Close { get; set; }
+        public string Play { get; set; }
+        public string Pause { get; set; }
     }
 }

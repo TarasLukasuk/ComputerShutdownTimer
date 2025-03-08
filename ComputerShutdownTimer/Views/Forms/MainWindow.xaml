@@ -131,6 +131,42 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style x:Key="StartCountdownButton" TargetType="Button">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#ECEFF4"/>
+            <Setter Property="Background" Value="#5E81AC"/>
+            <Setter Property="BorderBrush" Value="#88C0D0"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="ButtonBorder"
+                        Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="20"
+                        Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#81A1C1"/>
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#88C0D0"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="#4C566A"/>
+                                <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#5E81AC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Border CornerRadius="20" Background="#3B4252">
@@ -203,7 +239,9 @@
                             <RowDefinition Height="3*"/>
                         </Grid.RowDefinitions>
                         <Controls:TimeDisplay Grid.Row="0" />
-                        <Button Grid.Row="1"/>
+                        <Button x:Name="StartCountdown" Style="{StaticResource StartCountdownButton}" Grid.Row="1" Margin="0,10,0,0">
+                            <Image Source="{Binding PlayIcon}"/>
+                        </Button>
                     </Grid>
                 </Grid>
             </Grid>

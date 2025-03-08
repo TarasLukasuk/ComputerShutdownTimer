@@ -15,9 +15,9 @@
     <Viewbox>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Text="00" Style="{StaticResource TimeTextStyle}"/>
-            <TextBlock Text=":" Style="{StaticResource SeparatorStyle}"/>
+            <TextBlock x:Name="SeparatorLeft" Text=":" Style="{StaticResource SeparatorStyle}"/>
             <TextBlock Text="00" Style="{StaticResource TimeTextStyle}"/>
-            <TextBlock Text=":" Style="{StaticResource SeparatorStyle}"/>
+            <TextBlock x:Name="SeparatorRight" Text=":" Style="{StaticResource SeparatorStyle}"/>
             <TextBlock Text="00" Style="{StaticResource TimeTextStyle}"/>
         </StackPanel>
     </Viewbox>

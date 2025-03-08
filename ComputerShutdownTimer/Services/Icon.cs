@@ -43,7 +43,9 @@ namespace ComputerShutdownTimer.Services
                         _iconLoader.LoadIconAsync(iconsBase64Model.Normalize),
                         _iconLoader.LoadIconAsync(iconsBase64Model.Minimize),
                         _iconLoader.LoadIconAsync(iconsBase64Model.Setting),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.ToTray)
+                        _iconLoader.LoadIconAsync(iconsBase64Model.ToTray),
+                        _iconLoader.LoadIconAsync(iconsBase64Model.Play),
+                        _iconLoader.LoadIconAsync(iconsBase64Model.Pause)
                     };
 
                     BitmapImage[] results = await Task.WhenAll(tasks);
@@ -56,6 +58,8 @@ namespace ComputerShutdownTimer.Services
                     _mainViewModel.MinimizeIcon = results[5];
                     _mainViewModel.SettingsIcon = results[6];
                     _mainViewModel.ToTrayIcon = results[7];
+                    _mainViewModel.PlayIcon = results[8];
+                    _mainViewModel.PauseIcon = results[9];
                 }
             }
         }
