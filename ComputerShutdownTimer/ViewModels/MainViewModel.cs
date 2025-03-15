@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace ComputerShutdownTimer.ViewModels
 {
-    internal class MainViewModel : ViewModelBase
+    internal class MainViewModel : ModelBase
     {
         private BitmapImage _appIcon;
         private BitmapImage _settingsIcon;

@@ -84,7 +84,7 @@
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Services\WindowResizer .cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ModelBase.cs" />
     <Compile Include="Views\Forms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

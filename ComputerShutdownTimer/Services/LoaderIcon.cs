@@ -10,7 +10,7 @@ internal class IconLoader
         return await Task.Run(() =>
         {
             byte[] imageBytes = Convert.FromBase64String(base64String);
-            using (var ms = new MemoryStream(imageBytes))
+            using (MemoryStream ms = new MemoryStream(imageBytes))
             {
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
