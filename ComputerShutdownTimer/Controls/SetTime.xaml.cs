@@ -23,7 +23,7 @@ namespace ComputerShutdownTimer.Controls
         [Browsable(true)]
         public int MaxTimeValue
         {
-            get => new ObjectToInteger().Convert(GetValue(MaxTimeValueProperty));
+            get => new ObjectToIntegerConverter().Convert(GetValue(MaxTimeValueProperty));
             set => SetValue(MaxTimeValueProperty, value);
         }
 
@@ -33,7 +33,7 @@ namespace ComputerShutdownTimer.Controls
         [Browsable(true)]
         public string LableText
         {
-            get => new ObjectToString().Convert(GetValue(LableTextProperty));
+            get => new ObjectToStringConverter().Convert(GetValue(LableTextProperty));
             set => SetValue(LableTextProperty, value);
         }
 

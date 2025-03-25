@@ -1,5 +1,6 @@
 ﻿using ComputerShutdownTimer.Commands;
 using ComputerShutdownTimer.Services;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -31,17 +32,25 @@ namespace ComputerShutdownTimer.ViewModels
 
         public MainViewModel(Frame frame)
         {
-            ShowPageCommand = new ShowPageCommand(frame);
+            ShowPageCommand = new NavigateToPageCommand(frame);
         }
 
         public async Task InitializeAsync()
         {
-            Icon icon = new Icon(new IconLoader(), this);
+            TaskManager taskManager = new TaskManager();
+            IconService icon = new IconService(new IconLoaderService(), this);
 
-            Tasker tasker = new Tasker();
-            tasker.AddTask(icon.InitializeIconsAsync());
+            try
+            {
+                taskManager.Add(icon.InitializeIconsAsync());
+            }
+            catch (Exception)
+            {
 
-            await tasker.WaitAllAsync();
+                throw;
+            }
+
+            await taskManager.WhenAllAsync();
         }
 
         public ICommand ShowPageCommand { get; }

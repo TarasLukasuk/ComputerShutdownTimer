@@ -66,24 +66,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\ShowPageCommand.cs" />
+    <Compile Include="Commands\NavigateToPageCommand.cs" />
     <Compile Include="Controls\SetTime.xaml.cs">
       <DependentUpon>SetTime.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TimeDisplay.xaml.cs">
       <DependentUpon>TimeDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\HexToBrash.cs" />
-    <Compile Include="Converters\ObjectToInteger.cs" />
-    <Compile Include="Converters\ObjectToString.cs" />
-    <Compile Include="Converters\TypeToPage.cs" />
-    <Compile Include="Converters\IConverterType.cs" />
+    <Compile Include="Converters\HexToBrushConverter.cs" />
+    <Compile Include="Converters\ObjectToIntegerConverter.cs" />
+    <Compile Include="Converters\ObjectToStringConverter.cs" />
+    <Compile Include="Converters\TypeToPageConverter.cs" />
+    <Compile Include="Converters\IBiDirectionalConverter.cs" />
     <Compile Include="Models\IconsBase64Model.cs" />
-    <Compile Include="Services\Icon.cs" />
-    <Compile Include="Services\LoaderIcon.cs" />
+    <Compile Include="Services\IconService.cs" />
+    <Compile Include="Services\LoaderIconService.cs" />
     <Compile Include="Services\PageCache.cs" />
-    <Compile Include="Helpers\Validator.cs" />
-    <Compile Include="Services\Tasker.cs" />
+    <Compile Include="Helpers\ColorFormatValidator.cs" />
+    <Compile Include="Services\TaskManager.cs" />
     <Compile Include="Services\WindowResizer .cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ModelBase.cs" />
