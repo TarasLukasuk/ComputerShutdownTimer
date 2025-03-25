@@ -26,6 +26,8 @@ namespace ComputerShutdownTimer.Services
 
         public async Task InitializeIconsAsync()
         {
+            Tasker tasker = new Tasker();
+
             string pathJson = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"{BasePath}{FileName}{Extension}").Replace("\\bin\\Debug", string.Empty);
 
             using (FileStream stream = new FileStream(pathJson, FileMode.Open, FileAccess.Read))
@@ -34,21 +36,18 @@ namespace ComputerShutdownTimer.Services
                 {
                     IconsBase64Model iconsBase64Model = JsonConvert.DeserializeObject<IconsBase64Model>(reader.ReadToEnd());
 
-                    List<Task<BitmapImage>> tasks = new List<Task<BitmapImage>>
-                    {
-                        _iconLoader.LoadIconAsync(iconsBase64Model.App),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Arrow),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Close),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Maximize),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Normalize),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Minimize),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Setting),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.ToTray),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Play),
-                        _iconLoader.LoadIconAsync(iconsBase64Model.Pause)
-                    };
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.App));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Arrow));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Close));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Maximize));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Normalize));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Minimize));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Setting));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.ToTray));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Play));
+                    tasker.AddTask(_iconLoader.LoadIconAsync(iconsBase64Model.Pause));
 
-                    BitmapImage[] results = await Task.WhenAll(tasks);
+                    BitmapImage[] results = await tasker.WaitAllAsync<BitmapImage>();
 
                     _mainViewModel.AppIcon = results[0];
                     _mainViewModel.ArrowIcon = results[1];

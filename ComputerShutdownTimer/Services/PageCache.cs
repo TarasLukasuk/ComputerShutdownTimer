@@ -27,7 +27,7 @@ namespace ComputerShutdownTimer.Services
                 throw new ArgumentException($"Не вдалося знайти тип сторінки для '{pageName}'. Переконайтеся, що повне ім'я типу правильне.", nameof(pageName));
             }
 
-            Page page = new TypeToPage().Convert(pageType) as Page;
+            Page page = new TypeToPage().Convert(pageType);
             if (page == null)
             {
                 throw new InvalidOperationException($"Конвертація типу '{pageType.FullName}' у Page повернула null.");

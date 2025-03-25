@@ -37,7 +37,11 @@ namespace ComputerShutdownTimer.ViewModels
         public async Task InitializeAsync()
         {
             Icon icon = new Icon(new IconLoader(), this);
-            await icon.InitializeIconsAsync();
+
+            Tasker tasker = new Tasker();
+            tasker.AddTask(icon.InitializeIconsAsync());
+
+            await tasker.WaitAllAsync();
         }
 
         public ICommand ShowPageCommand { get; }
