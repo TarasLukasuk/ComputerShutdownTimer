@@ -18,7 +18,20 @@ namespace ComputerShutdownTimer.Services
 
             try
             {
-                return await Task.Run(() => LoadIconFromBase64(base64String)).ConfigureAwait(false);
+                return await Task.Run(() =>
+                {
+                    byte[] imageBytes = Convert.FromBase64String(base64String);
+                    using (var ms = new MemoryStream(imageBytes))
+                    {
+                        BitmapImage bitmapImage = new BitmapImage();
+                        bitmapImage.BeginInit();
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.StreamSource = ms;
+                        bitmapImage.EndInit();
+                        bitmapImage.Freeze();
+                        return bitmapImage;
+                    }
+                });
             }
             catch (Exception ex) when (ex is FormatException || ex is ArgumentException)
             {
@@ -27,28 +40,6 @@ namespace ComputerShutdownTimer.Services
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed to load icon", ex);
-            }
-        }
-
-        private static BitmapImage LoadIconFromBase64(string base64String)
-        {
-            byte[] imageBytes = Convert.FromBase64String(base64String);
-
-            using (MemoryStream memoryStream = new MemoryStream(imageBytes))
-            {
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                bitmapImage.StreamSource = memoryStream;
-                bitmapImage.EndInit();
-
-                if (bitmapImage.CanFreeze)
-                {
-                    bitmapImage.Freeze();
-                }
-
-                return bitmapImage;
             }
         }
 

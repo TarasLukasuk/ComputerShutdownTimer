@@ -69,7 +69,7 @@ public sealed class TaskManager : IDisposable
             genericTasks = _genericTasks.ToArray();
         }
 
-        await Task.WhenAll(voidTasks.Concat(genericTasks)).ConfigureAwait(false);
+        await Task.WhenAll(voidTasks.Concat(genericTasks));
     }
 
     public int Count

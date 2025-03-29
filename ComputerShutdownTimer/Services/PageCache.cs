@@ -5,11 +5,10 @@ using System.Windows.Controls;
 
 namespace ComputerShutdownTimer.Services
 {
-    internal sealed class PageCache : IDisposable
+    internal class PageCache
     {
         private readonly MemoryCache _cache = MemoryCache.Default;
         private readonly TypeToPageConverter _pageConverter = new TypeToPageConverter();
-        private bool _disposed;
 
         public Page GetOrCreatePage(string pageTypeName)
         {
@@ -58,16 +57,13 @@ namespace ComputerShutdownTimer.Services
                 Page page = _pageConverter.Convert(pageType);
                 if (page == null)
                 {
-                    throw new InvalidOperationException(
-                        $"Page conversion for type '{pageType.FullName}' returned null. " +
-                        "Verify the TypeToPageConverter implementation.");
+                    throw new InvalidOperationException($"Page conversion for type '{pageType.FullName}' returned null. Verify the TypeToPageConverter implementation.");
                 }
                 return page;
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException(
-                    $"Failed to create page instance of type '{pageType.FullName}'", ex);
+                throw new InvalidOperationException($"Failed to create page instance of type '{pageType.FullName}'", ex);
             }
         }
 
@@ -79,15 +75,6 @@ namespace ComputerShutdownTimer.Services
             };
 
             _cache.Set(pageTypeName, page, cachePolicy);
-        }
-
-        public void Dispose()
-        {
-            if (!_disposed)
-            {
-                _cache.Dispose();
-                _disposed = true;
-            }
         }
     }
 }
