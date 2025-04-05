@@ -1,4 +1,5 @@
 ﻿using ComputerShutdownTimer.Commands;
+using ComputerShutdownTimer.Helpers;
 using ComputerShutdownTimer.Services;
 using System;
 using System.Threading.Tasks;
@@ -22,13 +23,15 @@ namespace ComputerShutdownTimer.ViewModels
         private BitmapImage _playIcon;
         private BitmapImage _pauseIcon;
 
-        private Brush _backgroundColor;
-        private Brush _secondaryBackgroundColor;
-        private Brush _accentColor;
-        private Brush _lightAccentColor;
-        private Brush _textColor;
-        private Brush _borderColor;
-        private Brush _darkBackgroundColor;
+        private SolidColorBrush _mainBackground;
+        private SolidColorBrush _headerAndButtonBackground;
+        private SolidColorBrush _textForeground;
+        private SolidColorBrush _buttonBorder;
+        private SolidColorBrush _hoverBackground;
+        private SolidColorBrush _hoverBorder;
+        private SolidColorBrush _pressedBackground;
+        private SolidColorBrush _pressedBorder;
+        private SolidColorBrush _startButtonHoverBackground;
 
         public MainViewModel(Frame frame)
         {
@@ -60,103 +63,123 @@ namespace ComputerShutdownTimer.ViewModels
         public BitmapImage AppIcon
         {
             get => _appIcon;
-            set => SetProperty(ref _appIcon, value);
+            private set => SetProperty(ref _appIcon, value);
         }
 
         public BitmapImage SettingsIcon
         {
             get => _settingsIcon;
-            set => SetProperty(ref _settingsIcon, value);
+            private set => SetProperty(ref _settingsIcon, value);
         }
 
         public BitmapImage ArrowIcon
         {
             get => _arrowIcon;
-            set => SetProperty(ref _arrowIcon, value);
+            private set => SetProperty(ref _arrowIcon, value);
         }
 
         public BitmapImage ToTrayIcon
         {
             get => _toTrayIcon;
-            set => SetProperty(ref _toTrayIcon, value);
+            private set => SetProperty(ref _toTrayIcon, value);
         }
 
         public BitmapImage MinimizeIcon
         {
             get => _minimizeIcon;
-            set => SetProperty(ref _minimizeIcon, value);
+            private set => SetProperty(ref _minimizeIcon, value);
         }
 
         public BitmapImage NormalizeIcon
         {
             get => _normalizeIcon;
-            set => SetProperty(ref _normalizeIcon, value);
+            private set => SetProperty(ref _normalizeIcon, value);
         }
 
         public BitmapImage MaximizeIcon
         {
             get => _maximizeIcon;
-            set => SetProperty(ref _maximizeIcon, value);
+            private set => SetProperty(ref _maximizeIcon, value);
         }
 
         public BitmapImage CloseIcon
         {
             get => _closeIcon;
-            set => SetProperty(ref _closeIcon, value);
+            private set => SetProperty(ref _closeIcon, value);
         }
 
         public BitmapImage PlayIcon
         {
             get => _playIcon;
-            set => SetProperty(ref _playIcon, value);
+            private set => SetProperty(ref _playIcon, value);
         }
 
         public BitmapImage PauseIcon
         {
             get => _pauseIcon;
-            set => SetProperty(ref _pauseIcon, value);
+            private set => SetProperty(ref _pauseIcon, value);
         }
 
-        public Brush BackgroundColor
+        public SolidColorBrush MainBackground
         {
-            get => _backgroundColor;
-            set => SetProperty(ref _backgroundColor, value);
+            get => _mainBackground;
+            private set => SetProperty(ref _mainBackground, value);
         }
 
-        public Brush SecondaryBackgroundColor
+        public SolidColorBrush HeaderAndButtonBackground
         {
-            get => _secondaryBackgroundColor;
-            set => SetProperty(ref _secondaryBackgroundColor, value);
+            get => _headerAndButtonBackground;
+            private set => SetProperty(ref _headerAndButtonBackground, value);
         }
 
-        public Brush AccentColor
+        public SolidColorBrush TextForeground
         {
-            get => _accentColor; 
-            set => SetProperty(ref _accentColor, value);
+            get => _textForeground;
+            private set => SetProperty(ref _textForeground, value);
         }
 
-        public Brush LightAccentColor
+        public SolidColorBrush ButtonBorder
         {
-            get => _lightAccentColor; 
-            set => SetProperty(ref _lightAccentColor, value);
+            get => _buttonBorder;
+            private set => SetProperty(ref _buttonBorder, value);
         }
 
-        public Brush TextColor
+        public SolidColorBrush HoverBackground
         {
-            get => _textColor; 
-            set => SetProperty(ref _textColor, value);
+            get => _hoverBackground;
+            private set => SetProperty(ref _hoverBackground, value);
         }
 
-        public Brush BorderColor
+        public SolidColorBrush HoverBorder
         {
-            get => _borderColor; 
-            set => SetProperty(ref _borderColor, value);
+            get => _hoverBorder;
+            private set => SetProperty(ref _hoverBorder, value);
         }
 
-        public Brush DarkBackgroundColor
+        public SolidColorBrush PressedBackground
         {
-            get => _darkBackgroundColor; 
-            set => SetProperty(ref _darkBackgroundColor, value);
+            get => _pressedBackground;
+            private set => SetProperty(ref _pressedBackground, value);
+        }
+
+        public SolidColorBrush PressedBorder
+        {
+            get => _pressedBorder;
+            private set => SetProperty(ref _pressedBorder, value);
+        }
+
+        public SolidColorBrush StartButtonHoverBackground
+        {
+            get => _startButtonHoverBackground;
+            private set => SetProperty(ref _startButtonHoverBackground, value);
+        }
+
+        public void SetPoperty(string name) 
+        {
+            if (string.IsNullOrWhiteSpace(name) && Validator.IsValidClassImplementInterface(this))
+            {
+
+            }
         }
     }
 }

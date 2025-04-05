@@ -73,16 +73,18 @@
     <Compile Include="Controls\TimeDisplay.xaml.cs">
       <DependentUpon>TimeDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\HexToBrushConverter.cs" />
+    <Compile Include="Converters\HexToSolidBrushConverter.cs" />
     <Compile Include="Converters\ObjectToIntegerConverter.cs" />
     <Compile Include="Converters\ObjectToStringConverter.cs" />
     <Compile Include="Converters\TypeToPageConverter.cs" />
     <Compile Include="Converters\IBiDirectionalConverter.cs" />
     <Compile Include="Models\IconsBase64Model.cs" />
+    <Compile Include="Services\ColorService.cs" />
     <Compile Include="Services\IconService.cs" />
+    <Compile Include="Services\Loader.cs" />
     <Compile Include="Services\LoaderIconService.cs" />
     <Compile Include="Services\PageCache.cs" />
-    <Compile Include="Helpers\ColorFormatValidator.cs" />
+    <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Services\TaskManager.cs" />
     <Compile Include="Services\WindowResizer .cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

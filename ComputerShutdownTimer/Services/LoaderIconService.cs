@@ -5,22 +5,22 @@ using System.Windows.Media.Imaging;
 
 namespace ComputerShutdownTimer.Services
 {
-    internal class IconLoaderService : IDisposable
+    internal sealed class IconLoaderService : Loader<BitmapImage>
     {
         private bool _disposed;
 
-        public async Task<BitmapImage> LoadIconAsync(string base64String)
+        public override async Task<BitmapImage> LoadAsync(string data)
         {
-            if (string.IsNullOrWhiteSpace(base64String))
+            if (string.IsNullOrWhiteSpace(data))
             {
-                throw new ArgumentNullException(nameof(base64String), "Base64 string cannot be null or empty");
+                throw new ArgumentNullException(nameof(data), "Base64 string cannot be null or empty");
             }
 
             try
             {
                 return await Task.Run(() =>
                 {
-                    byte[] imageBytes = Convert.FromBase64String(base64String);
+                    byte[] imageBytes = Convert.FromBase64String(data);
                     using (var ms = new MemoryStream(imageBytes))
                     {
                         BitmapImage bitmapImage = new BitmapImage();
@@ -43,7 +43,7 @@ namespace ComputerShutdownTimer.Services
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             if (!_disposed)
             {

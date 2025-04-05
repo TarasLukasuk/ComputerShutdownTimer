@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
@@ -14,12 +13,12 @@ namespace ComputerShutdownTimer.Services
     {
         private const string IconResourcesPath = "Resources\\Icons.json";
 
-        private readonly IconLoaderService _iconLoader;
+        private readonly Loader<BitmapImage> _loader;
         private readonly MainViewModel _mainViewModel;
 
-        public IconService(IconLoaderService iconLoader, MainViewModel mainViewModel)
+        public IconService(Loader<BitmapImage> loader, MainViewModel mainViewModel)
         {
-            _iconLoader = iconLoader ?? throw new ArgumentNullException(nameof(iconLoader));
+            _loader = loader ?? throw new ArgumentNullException(nameof(loader));
             _mainViewModel = mainViewModel ?? throw new ArgumentNullException(nameof(mainViewModel));
         }
 
@@ -68,18 +67,18 @@ namespace ComputerShutdownTimer.Services
         {
             using (TaskManager taskManager = new TaskManager())
             {
-                using (_iconLoader)
+                using (_loader)
                 {
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.App));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Arrow));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Close));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Maximize));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Normalize));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Minimize));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Setting));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.ToTray));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Play));
-                    taskManager.Add(_iconLoader.LoadIconAsync(iconsBase64Model.Pause));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.App));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Arrow));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Close));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Maximize));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Normalize));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Minimize));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Setting));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.ToTray));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Play));
+                    taskManager.Add(_loader.LoadAsync(iconsBase64Model.Pause));
                 }
 
                 AssignIconsToViewModel(await taskManager.WhenAllAsync<BitmapImage>());
