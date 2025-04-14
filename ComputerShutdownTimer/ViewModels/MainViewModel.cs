@@ -63,122 +63,122 @@ namespace ComputerShutdownTimer.ViewModels
         public BitmapImage AppIcon
         {
             get => _appIcon;
-            private set => SetProperty(ref _appIcon, value);
+            private set => SetProperty(ref _appIcon, value, nameof(AppIcon));
         }
 
         public BitmapImage SettingsIcon
         {
             get => _settingsIcon;
-            private set => SetProperty(ref _settingsIcon, value);
+            private set => SetProperty(ref _settingsIcon, value, nameof(SettingsIcon));
         }
 
         public BitmapImage ArrowIcon
         {
             get => _arrowIcon;
-            private set => SetProperty(ref _arrowIcon, value);
+            private set => SetProperty(ref _arrowIcon, value, nameof(ArrowIcon));
         }
 
         public BitmapImage ToTrayIcon
         {
             get => _toTrayIcon;
-            private set => SetProperty(ref _toTrayIcon, value);
+            private set => SetProperty(ref _toTrayIcon, value, nameof(ToTrayIcon));
         }
 
         public BitmapImage MinimizeIcon
         {
             get => _minimizeIcon;
-            private set => SetProperty(ref _minimizeIcon, value);
+            private set => SetProperty(ref _minimizeIcon, value, nameof(MinimizeIcon));
         }
 
         public BitmapImage NormalizeIcon
         {
             get => _normalizeIcon;
-            private set => SetProperty(ref _normalizeIcon, value);
+            private set => SetProperty(ref _normalizeIcon, value, nameof(NormalizeIcon));
         }
 
         public BitmapImage MaximizeIcon
         {
             get => _maximizeIcon;
-            private set => SetProperty(ref _maximizeIcon, value);
+            private set => SetProperty(ref _maximizeIcon, value, nameof(MaximizeIcon));
         }
 
         public BitmapImage CloseIcon
         {
             get => _closeIcon;
-            private set => SetProperty(ref _closeIcon, value);
+            private set => SetProperty(ref _closeIcon, value, nameof(CloseIcon));
         }
 
         public BitmapImage PlayIcon
         {
             get => _playIcon;
-            private set => SetProperty(ref _playIcon, value);
+            private set => SetProperty(ref _playIcon, value, nameof(PlayIcon));
         }
 
         public BitmapImage PauseIcon
         {
             get => _pauseIcon;
-            private set => SetProperty(ref _pauseIcon, value);
+            private set => SetProperty(ref _pauseIcon, value, nameof(PauseIcon));
         }
 
         public SolidColorBrush MainBackground
         {
             get => _mainBackground;
-            private set => SetProperty(ref _mainBackground, value);
+            private set => SetProperty(ref _mainBackground, value, nameof(MainBackground));
         }
 
         public SolidColorBrush HeaderAndButtonBackground
         {
             get => _headerAndButtonBackground;
-            private set => SetProperty(ref _headerAndButtonBackground, value);
+            private set => SetProperty(ref _headerAndButtonBackground, value, nameof(HeaderAndButtonBackground));
         }
 
         public SolidColorBrush TextForeground
         {
             get => _textForeground;
-            private set => SetProperty(ref _textForeground, value);
+            private set => SetProperty(ref _textForeground, value, nameof(TextForeground));
         }
 
         public SolidColorBrush ButtonBorder
         {
             get => _buttonBorder;
-            private set => SetProperty(ref _buttonBorder, value);
+            private set => SetProperty(ref _buttonBorder, value, nameof(ButtonBorder));
         }
 
         public SolidColorBrush HoverBackground
         {
             get => _hoverBackground;
-            private set => SetProperty(ref _hoverBackground, value);
+            private set => SetProperty(ref _hoverBackground, value, nameof(HoverBackground));
         }
 
         public SolidColorBrush HoverBorder
         {
             get => _hoverBorder;
-            private set => SetProperty(ref _hoverBorder, value);
+            private set => SetProperty(ref _hoverBorder, value, nameof(HoverBorder));
         }
 
         public SolidColorBrush PressedBackground
         {
             get => _pressedBackground;
-            private set => SetProperty(ref _pressedBackground, value);
+            private set => SetProperty(ref _pressedBackground, value, nameof(PressedBackground));
         }
 
         public SolidColorBrush PressedBorder
         {
             get => _pressedBorder;
-            private set => SetProperty(ref _pressedBorder, value);
+            private set => SetProperty(ref _pressedBorder, value, nameof(PressedBorder));
         }
 
         public SolidColorBrush StartButtonHoverBackground
         {
             get => _startButtonHoverBackground;
-            private set => SetProperty(ref _startButtonHoverBackground, value);
+            private set => SetProperty(ref _startButtonHoverBackground, value, nameof(StartButtonHoverBackground));
         }
 
-        public void SetPoperty(string name) 
+        public void SetPropertyValue<TValue>(string propertyName, TValue value)
         {
-            if (string.IsNullOrWhiteSpace(name) && Validator.IsValidClassImplementInterface(this))
+            if (Validator.IsValidClassImplementInterface(this))
             {
-
+                base.SetPropertyValue(propertyName, value, this);
             }
         }
     }

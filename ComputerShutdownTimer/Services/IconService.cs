@@ -87,16 +87,16 @@ namespace ComputerShutdownTimer.Services
 
         private void AssignIconsToViewModel(BitmapImage[] icons)
         {
-            _mainViewModel.AppIcon = icons[0];
-            _mainViewModel.ArrowIcon = icons[1];
-            _mainViewModel.CloseIcon = icons[2];
-            _mainViewModel.MaximizeIcon = icons[3];
-            _mainViewModel.NormalizeIcon = icons[4];
-            _mainViewModel.MinimizeIcon = icons[5];
-            _mainViewModel.SettingsIcon = icons[6];
-            _mainViewModel.ToTrayIcon = icons[7];
-            _mainViewModel.PlayIcon = icons[8];
-            _mainViewModel.PauseIcon = icons[9];
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.AppIcon), icons[0]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.ArrowIcon), icons[1]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.CloseIcon), icons[2]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.MaximizeIcon), icons[3]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.NormalizeIcon), icons[4]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.MinimizeIcon), icons[5]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.SettingsIcon), icons[6]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.ToTrayIcon), icons[7]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.PlayIcon), icons[8]);
+            _mainViewModel.SetPropertyValue(nameof(_mainViewModel.PauseIcon), icons[9]);
         }
     }
 }

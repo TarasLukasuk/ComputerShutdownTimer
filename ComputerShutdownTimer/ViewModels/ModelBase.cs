@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace ComputerShutdownTimer.ViewModels
 {
     public abstract class ModelBase : INotifyPropertyChanged, IDisposable
     {
-        private readonly Dictionary<string, object> _propertyStorage = new Dictionary<string, object>();
         private bool _disposed;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -18,9 +18,9 @@ namespace ComputerShutdownTimer.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        protected bool SetProperty<T>(ref T field, T newValue, string propertyName)
         {
-            if (EqualityComparer<T>.Default.Equals(field, newValue))
+            if (Equals(field, newValue))
                 return false;
 
             field = newValue;
@@ -28,47 +28,23 @@ namespace ComputerShutdownTimer.ViewModels
             return true;
         }
 
-        protected T GetProperty<T>(T defaultValue = default, [CallerMemberName] string propertyName = null)
+        protected virtual void SetPropertyValue<TValue, TClass>(string propertyName, TValue value, TClass @class)
         {
-            if (_propertyStorage.TryGetValue(propertyName, out object value))
+            if (string.IsNullOrWhiteSpace(propertyName))
             {
-                return (T)value;
-            }
-            return defaultValue;
-        }
-
-        protected bool SetProperty<T>(T newValue, [CallerMemberName] string propertyName = null)
-        {
-            T currentValue = GetProperty<T>(propertyName: propertyName);
-
-            if (EqualityComparer<T>.Default.Equals(currentValue, newValue))
-            {
-                return false;
+                throw new ArgumentException("Property name cannot be null or whitespace.", nameof(propertyName));
             }
 
-            _propertyStorage[propertyName] = newValue;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
+            PropertyInfo property = typeof(TClass).GetProperty(propertyName, BindingFlags.Public | BindingFlags.Instance);
 
-        protected void OnPropertiesChanged(params string[] propertyNames)
-        {
-            foreach (var name in propertyNames)
+            if (property == null)
             {
-                OnPropertyChanged(name);
+                throw new ArgumentException($"Property '{propertyName}' not found on type '{typeof(TClass).FullName}'.");
             }
+
+            property.SetValue(@class, value);
         }
 
-        protected void ClearProperties()
-        {
-            var propertyNames = _propertyStorage.Keys.ToList();
-            _propertyStorage.Clear();
-
-            foreach (var name in propertyNames)
-            {
-                OnPropertyChanged(name);
-            }
-        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -76,7 +52,6 @@ namespace ComputerShutdownTimer.ViewModels
             {
                 if (disposing)
                 {
-                    ClearProperties();
                     PropertyChanged = null;
                 }
                 _disposed = true;
