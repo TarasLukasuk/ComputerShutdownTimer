@@ -12,7 +12,6 @@
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Resources\" />
     <Folder Include="Converters\" />
     <Folder Include="Commands\" />
     <Folder Include="DependencyInjection\" />
