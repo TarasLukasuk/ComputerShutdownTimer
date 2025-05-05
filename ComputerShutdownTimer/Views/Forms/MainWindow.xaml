@@ -15,7 +15,7 @@
         <Border Background="#26255B" Height="45" CornerRadius="20,20,0,0" VerticalAlignment="Top">
             <Grid Margin="10">
                 <Image Width="30" HorizontalAlignment="Left"/>
-                <TextBlock Text="{Binding Title, ElementName=window}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#F0F0F0" FontWeight="Bold" FontSize="14"/>
+                <TextBlock Text="{Binding Title, ElementName=window}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#F0F0F0" FontWeight="Bold" FontSize="20"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <CheckBox/>
                     <Button/>
@@ -26,14 +26,16 @@
             </Grid>
         </Border>
 
-        <Rectangle VerticalAlignment="Top" Height="10" Fill="Transparent" Cursor="SizeNS" Margin="10,0"/>
-        <Rectangle VerticalAlignment="Bottom" Height="10" Fill="Transparent" Cursor="SizeNS" Margin="10,0"/>
-        <Rectangle HorizontalAlignment="Left" Width="10" Fill="Transparent" Cursor="SizeWE" Margin="0,10"/>
-        <Rectangle HorizontalAlignment="Right" Width="10" Fill="Transparent" Cursor="SizeWE" Margin="0,10"/>
-        <Rectangle HorizontalAlignment="Left" VerticalAlignment="Top" Width="10" Height="10" Fill="Transparent" Cursor="SizeNWSE"/>
-        <Rectangle HorizontalAlignment="Right" VerticalAlignment="Top" Width="10" Height="10" Fill="Transparent" Cursor="SizeNESW"/>
-        <Rectangle HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="10" Height="10" Fill="Transparent" Cursor="SizeNESW"/>
-        <Rectangle HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="10" Height="10" Fill="Transparent" Cursor="SizeNWSE"/>
+        <Border CornerRadius="0,0,20,20" VerticalAlignment="Top" Margin="0,45"/>
+
+        <Rectangle x:Name="TopResizing" VerticalAlignment="Top" Height="10" Fill="Transparent" Cursor="SizeNS" Margin="10,0" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="BottomResizing" VerticalAlignment="Bottom" Height="10" Fill="Transparent" Cursor="SizeNS" Margin="10,0" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="LeftResizing" HorizontalAlignment="Left" Width="10" Fill="Transparent" Cursor="SizeWE" Margin="0,10" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="RightResizing" HorizontalAlignment="Right" Width="10" Fill="Transparent" Cursor="SizeWE" Margin="0,10" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="TopLeftResizing" HorizontalAlignment="Left" VerticalAlignment="Top" Width="10" Height="10" Fill="Transparent" Cursor="SizeNWSE" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="TopRightResizing" HorizontalAlignment="Right" VerticalAlignment="Top" Width="10" Height="10" Fill="Transparent" Cursor="SizeNESW" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="BottomLeftResizing" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="10" Height="10" Fill="Transparent" Cursor="SizeNESW" MouseLeftButtonDown="Resizing"/>
+        <Rectangle x:Name="BottomRightResizing" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="10" Height="10" Fill="Transparent" Cursor="SizeNWSE" MouseLeftButtonDown="Resizing"/>
 
         <Grid Margin="20,60,20,20">
             
