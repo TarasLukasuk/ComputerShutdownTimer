@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ComputerShutdownTimer.Interfaces;
+using ComputerShutdownTimer.Services;
 
 namespace ComputerShutdownTimer.ViewModels
 {
-    class MainViewModel
+    class MainViewModel : IInitialization
     {
+        public async Task InitializationAsync()
+        {
+            TaskManager taskManager = new();
+            taskManager.Add();
+            taskManager.Add();
+
+            await taskManager.WaitAllTaskAsync();
+
+        }
     }
 }
